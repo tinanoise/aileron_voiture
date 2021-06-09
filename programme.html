@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />	   <!--Indique le type de codage des caractères-->
+	<link rel="stylesheet" href="style.css" />  	<!--lien vers le fichier css-->
+    <title>Programme</title>			<!--titre de l'onglet de la page-->
+  </head>
+  <body>
+    <body style="background-color:#3767ce65;"></body>
+  
+  <header>
+      <table >
+        <tr>
+          <td>
+            <h1><a href="index.html"><img height="20%" width="20%" alt="mon compte" src="accueil.jpg"></a></h1>
+          </td>
+          <td>
+            <h1>Création d’un aileron contrôlable pour améliorer stabilité dans les virages</h1>
+          </td>
+        </tr>
+      </table>
+	</header>
+<nav>
+  <ul>
+    <li class="deroulant"><a href="#">Introduction &ensp;</a>
+      <ul class="sous">
+        <li><a href="À quoi sert un aileron.html">À quoi sert un aileron ?</a></li>
+        <li><a href="Pourquoi avoir un aileron à angle variable.html">Pourquoi avoir un aileron à angle variable ?</a></li>
+        <li><a href="Exemple d'utilisation.html">Exemple d'utilisation</a></li>
+      </ul>
+    </li>
+    <li class="deroulant"><a href="#">Diagrammes et Objectifs &ensp;</a>
+      <ul class="sous">
+        <li><a href="Diagramme de cas d’utilisation & d’exigence.html">Diagramme de cas d’utilisation & d’exigence</a></li>
+        <li><a href="Chaine d'info et d'énergie.html">Chaine d'info et d'énergie</a></li>
+        <li><a href="Objectifs & Fonctionnement.html">Objectifs & Fonctionnement</a></li>
+      </ul>
+    </li>
+    <li><a href="programme.html">Programme</a></li>
+    <li><a href="lien utile.html">lien utile</a></li>
+  </ul>
+</nav>
+
+<table >
+  <tr>
+    <td>
+      <pre>
+      <font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">Servo</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+      <b><font color="#d35400">Servo</font></b> <font color="#000000">monservo</font><font color="#000000">;</font>
+
+      <font color="#00979c">byte</font> <font color="#000000">angle</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font>
+      <font color="#00979c">const</font> <font color="#00979c">byte</font> <font color="#000000">bouton1</font><font color="#434f54">=</font><font color="#000000">12</font> <font color="#000000">;</font>
+      <font color="#00979c">boolean</font> <font color="#000000">etatbouton1</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pot1</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font>
+      <font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pot2</font> <font color="#434f54">=</font> <font color="#000000">A1</font><font color="#000000">;</font>
+      <font color="#00979c">int</font> <font color="#000000">vitesse</font><font color="#000000">;</font>
+      <font color="#00979c">int</font> <font color="#000000">volant</font><font color="#000000">;</font>
+
+      <font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+      &nbsp;<font color="#000000">monservo</font><font color="#434f54">.</font><font color="#d35400">attach</font><font color="#000000">(</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">bouton1</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+      <font color="#000000">}</font>
+
+      <font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+      <font color="#000000">{</font>
+      &nbsp;<font color="#000000">vitesse</font><font color="#434f54">=</font><font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">pot1</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">volant</font><font color="#434f54">=</font><font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">pot2</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">etatbouton1</font><font color="#434f54">=</font><font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">bouton1</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">vitesse</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">volant</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">etatbouton1</font><font color="#434f54">==</font><font color="#00979c">HIGH</font><font color="#000000">)</font>
+      &nbsp;<font color="#000000">{</font>
+      &nbsp;&nbsp;&nbsp;<font color="#000000">monservo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">90</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;&nbsp;&nbsp;<font color="#000000">etatbouton1</font><font color="#434f54">==</font><font color="#00979c">LOW</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">}</font>
+      &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">vitesse</font><font color="#434f54">&gt;</font><font color="#000000">900</font><font color="#000000">)</font>
+      &nbsp;<font color="#000000">{</font>
+      &nbsp;&nbsp;&nbsp;<font color="#000000">monservo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">90</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">}</font>
+      &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">volant</font><font color="#434f54">&gt;</font><font color="#000000">700</font><font color="#434f54">||</font><font color="#000000">volant</font><font color="#434f54">&lt;</font><font color="#000000">300</font><font color="#000000">)</font>
+      &nbsp;<font color="#000000">{</font>
+      &nbsp;&nbsp;&nbsp;<font color="#000000">monservo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">90</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">}</font>
+      &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">volant</font><font color="#434f54">&lt;</font><font color="#000000">700</font><font color="#434f54">&amp;&amp;</font><font color="#000000">volant</font><font color="#434f54">&gt;</font><font color="#000000">300</font><font color="#434f54">&amp;&amp;</font><font color="#000000">vitesse</font><font color="#434f54">&lt;</font><font color="#000000">900</font><font color="#434f54">&amp;&amp;</font><font color="#000000">etatbouton1</font><font color="#434f54">==</font><font color="#00979c">LOW</font><font color="#000000">)</font>
+      &nbsp;<font color="#000000">{</font>
+      &nbsp;&nbsp;&nbsp;<font color="#000000">monservo</font><font color="#434f54">.</font><font color="#d35400">write</font><font color="#000000">(</font><font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font>
+      &nbsp;<font color="#000000">}</font>
+      <font color="#000000">}</font>
+
+      </pre>
+    </td>
+    <td>
+      <img src="cablage.PNG" height="100%" width="100%" alt="Diapositive1">
+    </td>
+  </tr>
+</table>
+<h4><a href="https://www.tinkercad.com/things/3i1NCwmghZU" target="_blank">Lien Tinkercad</a></h4>
+
+  </body>
+
+    <footer>
+        <h3>© 2021 Projet page - Thomas BONNIN - Arthur DEPIERRE - Valentin MEILLANT</h3>
+    </footer>
+</html>
+
