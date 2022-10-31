@@ -1,0 +1,10 @@
+{
+    "status": {
+        "1": <status 1 value>,
+        "2": <status 2 value>,
+    },
+    "settings: {
+        "2": <setting 2 value>,
+        "3": <setting 3 value>,
+    }
+}
